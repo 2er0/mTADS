@@ -1,0 +1,2 @@
+srb_timeseries/4-lotka_volterra-2-prey-2-predator-1000-cooldown-1-mil-steps/*.csv filter=lfs diff=lfs merge=lfs -text
+srb_timeseries/4-lotka_volterra-3-prey-2-predator-500-cooldown-1-mil-steps/*.csv filter=lfs diff=lfs merge=lfs -text

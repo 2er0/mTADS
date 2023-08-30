@@ -1,0 +1,695 @@
+fsb-timeseries:
+- a_t:
+  - 1
+  - 0.99
+  anomalies:
+  - kinds:
+    - kind: signal-cancellation
+  channels: 2
+  feature_columns:
+  - value-0
+  - value-1
+  name: 2-increasing-all
+- a_t:
+  - 1
+  - 0.99
+  anomalies:
+  - kinds:
+    - kind: signal-reset
+  channels: 2
+  cuts:
+  - 100
+  - 133
+  feature_columns:
+  - value-0
+  - value-1
+  inject: 0.8
+  iterations: 1000
+  name: 2-saw-all
+  permutation:
+  - 900
+  - 931
+- a_t:
+  - 1
+  - 0.99
+  - 0.98
+  - 0.97
+  anomalies:
+  - kinds:
+    - kind: signal-reset
+  channels: 4
+  cuts:
+  - 100
+  - 133
+  - 142
+  - 151
+  feature_columns:
+  - value-0
+  - value-1
+  - value-2
+  - value-3
+  inject: 0.8
+  iterations: 1000
+  name: 4-saw-all
+  permutation:
+  - 852
+  - 900
+  - 906
+  - 931
+  - 994
+- a_t:
+  - 1
+  - 1.5
+  anomalies:
+  - kinds:
+    - kind: signal-reset
+  channels: 2
+  cuts:
+  - 7
+  - null
+  end: 10
+  feature_columns:
+  - value-0
+  - value-1
+  iterations: 1000
+  name: 2-wave-one-channel
+  permutation:
+  - 700
+- a_t:
+  - 1
+  - 1.5
+  anomalies:
+  - kinds:
+    - kind: signal-reset
+  channels: 2
+  cuts:
+  - 6.3
+  - 6.3
+  end: 10
+  feature_columns:
+  - value-0
+  - value-1
+  iterations: 1000
+  name: 2-wave-synced-one-channel
+  permutation:
+  - 630
+- a_t:
+  - 1
+  - 1.5
+  anomalies:
+  - kinds:
+    - kind: signal-reset
+  channels: 2
+  cuts:
+  - 6.0
+  - 6.0
+  end: 10
+  feature_columns:
+  - value-0
+  - value-1
+  iterations: 1000
+  name: 2-wave-off-synced-all-channel
+  permutation:
+  - 600
+- a_t:
+  - 1
+  - 1.5
+  anomalies:
+  - kinds:
+    - kind: signal-reset
+  channels: 2
+  cuts:
+  - 6.2
+  - null
+  end: 10
+  feature_columns:
+  - value-0
+  - value-1
+  iterations: 1000
+  name: 2-wave-light-off-synced-one-channel
+  permutation:
+  - 620
+- a_t:
+  - 1
+  - 1.5
+  - 1.2
+  - 1.8
+  anomalies:
+  - kinds:
+    - kind: signal-reset
+  channels: 4
+  cuts:
+  - 7
+  - null
+  - 7
+  - null
+  end: 10
+  feature_columns:
+  - value-0
+  - value-1
+  - value-2
+  - value-3
+  iterations: 1000
+  name: 4-wave-two-channel
+  permutation:
+  - 700
+- a_t:
+  - 1
+  - 1.5
+  anomalies:
+  - kinds:
+    - kind: signal-reset
+  channels: 2
+  cuts:
+  - 6
+  - 8
+  end: 10
+  feature_columns:
+  - value-0
+  - value-1
+  iterations: 1000
+  name: 2-wave-no-synced-cut-all-channel
+  permutation:
+  - 600
+  - 800
+- a_t:
+  - 1
+  - 1.5
+  anomalies:
+  - kinds:
+    - kind: signal-cut-match
+  channels: 2
+  cuts:
+  - 6.5
+  - 7
+  end: 10
+  feature_columns:
+  - value-0
+  - value-1
+  iterations: 1000
+  name: 2-medium_past_std_cut_wave
+  permutation:
+  - 650
+  - 700
+  std_ratio:
+  - 1
+  - 1
+- a_t:
+  - 1
+  - 1.5
+  anomalies:
+  - kinds:
+    - kind: signal-cut-match
+  channels: 2
+  cuts:
+  - 6.5
+  - 7
+  end: 10
+  feature_columns:
+  - value-0
+  - value-1
+  iterations: 1000
+  name: 2-big_past_std_cut_wave
+  permutation:
+  - 650
+  - 700
+  std_ratio:
+  - 1
+  - 1
+- alpha:
+  - - 0
+    - 0.5
+    - 0.3
+    - 0
+  - - 0
+    - 0
+    - 0.3
+    - 0
+  - - 0
+    - 0
+    - 0
+    - 0
+  - - 0
+    - 0
+    - 0.3
+    - 0
+  anomalies:
+  - kinds:
+    - kind: disconnect
+  channels: 4
+  cut:
+  - null
+  - - 280
+    - 300
+  - null
+  - null
+  feature_columns:
+  - value-0
+  - value-1
+  - value-2
+  - value-3
+  iterations: 300
+  name: 4-corr-0.35_mInfluence-noTrend-1_channel_anomaly
+  trend:
+  - 0
+  - 0
+  - 0
+  - 0
+- alpha:
+  - - 0
+    - 0.5
+  - - 0
+    - 0
+  anomalies:
+  - kinds:
+    - kind: disconnect
+  channels: 2
+  cut:
+  - null
+  - - 50
+    - 60
+  feature_columns:
+  - value-0
+  - value-1
+  iterations: 100
+  name: 2-corr-0.5_mInfluence-noTrend-1_channel_anomaly
+  trend:
+  - 0
+  - 0
+- alpha:
+  - - 0
+    - 0.5
+  - - 0
+    - 0
+  anomalies:
+  - kinds:
+    - kind: disconnect
+  channels: 2
+  cut:
+  - null
+  - - 50
+    - 60
+  feature_columns:
+  - value-0
+  - value-1
+  iterations: 100
+  name: 2-corr-0.5_mInfluence-0.5_inclTrend-1_channel_anomaly
+  trend:
+  - 2
+  - -1
+- alpha:
+  - - 0
+    - 0.5
+  - - 0
+    - 0
+  anomalies:
+  - kinds:
+    - kind: disconnect
+  channels: 2
+  cut:
+  - null
+  - - 50
+    - 60
+  feature_columns:
+  - value-0
+  - value-1
+  iterations: 100
+  name: 2-corr-0.5_mInfluence-0.0_inclTrend-1_channel_anomaly
+  trend:
+  - 2
+  - -2
+- alpha:
+  - - 0
+    - 0.8
+  - - 0
+    - 0
+  anomalies:
+  - kinds:
+    - kind: disconnect
+  channels: 2
+  cut:
+  - null
+  - - 50
+    - 60
+  feature_columns:
+  - value-0
+  - value-1
+  iterations: 100
+  name: 2-corr-0.8_mInfluence-noTrend-1_channel_anomaly
+  trend:
+  - 0
+  - 0
+- a_t:
+  - 1
+  - 0.99
+  anomalies:
+  - kinds:
+    - kind: signal-cut
+  channels: 2
+  feature_columns:
+  - value-0
+  - value-1
+  name: 2-std_cut_increasing-stdRatio_2-stdPast_10
+  permutation:
+  - 1000
+  std_ratio:
+  - 2
+  - 2
+- a_t:
+  - 1
+  - 0.99
+  anomalies:
+  - kinds:
+    - kind: signal-cut
+  channels: 2
+  feature_columns:
+  - value-0
+  - value-1
+  name: 2-std_cut_increasing-stdRatio_2-stdPast_40
+  permutation:
+  - 1000
+  std_ratio:
+  - 2
+  - 2
+- a_t:
+  - 1
+  - 0.99
+  anomalies:
+  - kinds:
+    - kind: signal-cut
+  channels: 2
+  feature_columns:
+  - value-0
+  - value-1
+  name: 2-std_cut_increasing-stdRatio_2-stdPast_70
+  permutation:
+  - 1000
+  std_ratio:
+  - 2
+  - 2
+- a_t:
+  - 1
+  - 0.99
+  anomalies:
+  - kinds:
+    - kind: signal-cut
+  channels: 2
+  feature_columns:
+  - value-0
+  - value-1
+  name: 2-std_cut_increasing-stdRatio_3-stdPast_10
+  permutation:
+  - 1000
+  std_ratio:
+  - 3
+  - 3
+- a_t:
+  - 1
+  - 0.99
+  anomalies:
+  - kinds:
+    - kind: signal-cut
+  channels: 2
+  feature_columns:
+  - value-0
+  - value-1
+  name: 2-std_cut_increasing-stdRatio_3-stdPast_40
+  permutation:
+  - 1000
+  std_ratio:
+  - 3
+  - 3
+- a_t:
+  - 1
+  - 0.99
+  anomalies:
+  - kinds:
+    - kind: signal-cut
+  channels: 2
+  feature_columns:
+  - value-0
+  - value-1
+  name: 2-std_cut_increasing-stdRatio_3-stdPast_70
+  permutation:
+  - 1000
+  std_ratio:
+  - 3
+  - 3
+- a_t:
+  - 0.99
+  - 0.9
+  anomalies:
+  - kinds:
+    - kind: signal-cut
+  channels: 2
+  feature_columns:
+  - value-0
+  - value-1
+  name: 2-std_cut_increasing_continue-stdRatio_2-stdPast_10
+  permutation:
+  - 1000
+  std_ratio:
+  - 2
+  - 2
+- a_t:
+  - 0.99
+  - 0.9
+  anomalies:
+  - kinds:
+    - kind: signal-cut
+  channels: 2
+  feature_columns:
+  - value-0
+  - value-1
+  name: 2-std_cut_increasing_continue-stdRatio_2-stdPast_30
+  permutation:
+  - 1000
+  std_ratio:
+  - 2
+  - 2
+- a_t:
+  - 0.99
+  - 0.9
+  anomalies:
+  - kinds:
+    - kind: signal-cut
+  channels: 2
+  feature_columns:
+  - value-0
+  - value-1
+  name: 2-std_cut_increasing_continue-stdRatio_2-stdPast_50
+  permutation:
+  - 1000
+  std_ratio:
+  - 2
+  - 2
+- a_t:
+  - 0.99
+  - 0.9
+  anomalies:
+  - kinds:
+    - kind: signal-cut
+  channels: 2
+  feature_columns:
+  - value-0
+  - value-1
+  name: 2-std_cut_increasing_continue-stdRatio_3-stdPast_10
+  permutation:
+  - 1000
+  std_ratio:
+  - 3
+  - 3
+- a_t:
+  - 0.99
+  - 0.9
+  anomalies:
+  - kinds:
+    - kind: signal-cut
+  channels: 2
+  feature_columns:
+  - value-0
+  - value-1
+  name: 2-std_cut_increasing_continue-stdRatio_3-stdPast_30
+  permutation:
+  - 1000
+  std_ratio:
+  - 3
+  - 3
+- a_t:
+  - 0.99
+  - 0.9
+  anomalies:
+  - kinds:
+    - kind: signal-cut
+  channels: 2
+  feature_columns:
+  - value-0
+  - value-1
+  name: 2-std_cut_increasing_continue-stdRatio_3-stdPast_50
+  permutation:
+  - 1000
+  std_ratio:
+  - 3
+  - 3
+- a_t:
+  - 1
+  - 1.5
+  anomalies:
+  - kinds:
+    - kind: signal-cut-match
+  channels: 2
+  cuts:
+  - 30.599999999999998
+  - 42
+  end: 50
+  feature_columns:
+  - value-0
+  - value-1
+  iterations: 5000
+  name: 2-std_cut_wave-stdRatio_2-stdPast_10
+  permutation:
+  - 3060
+  - 4200
+  std_ratio:
+  - 2
+  - 2
+- a_t:
+  - 1
+  - 1.5
+  anomalies:
+  - kinds:
+    - kind: signal-cut-match
+  channels: 2
+  cuts:
+  - 30.599999999999998
+  - 42
+  end: 50
+  feature_columns:
+  - value-0
+  - value-1
+  iterations: 5000
+  name: 2-std_cut_wave-stdRatio_2-stdPast_30
+  permutation:
+  - 3060
+  - 4200
+  std_ratio:
+  - 2
+  - 2
+- a_t:
+  - 1
+  - 1.5
+  anomalies:
+  - kinds:
+    - kind: signal-cut-match
+  channels: 2
+  cuts:
+  - 30.599999999999998
+  - 42
+  end: 50
+  feature_columns:
+  - value-0
+  - value-1
+  iterations: 5000
+  name: 2-std_cut_wave-stdRatio_2-stdPast_70
+  permutation:
+  - 3060
+  - 4200
+  std_ratio:
+  - 2
+  - 2
+- a_t:
+  - 1
+  - 1.5
+  - -0.6
+  - 0.7
+  anomalies:
+  - kinds:
+    - kind: signal-cut-match
+  channels: 4
+  cuts:
+  - 30.599999999999998
+  - 42
+  - 34.2
+  - 37.2
+  end: 50
+  feature_columns:
+  - value-0
+  - value-1
+  - value-2
+  - value-3
+  iterations: 5000
+  name: 4-std_cut_wave-stdRatio_2-stdPast_10
+  permutation:
+  - 3060
+  - 3420
+  - 3720
+  - 4200
+  std_ratio:
+  - 2
+  - 2
+  - 2
+  - 2
+- a_t:
+  - 1
+  - 1.5
+  - -0.6
+  - 0.7
+  anomalies:
+  - kinds:
+    - kind: signal-cut-match
+  channels: 4
+  cuts:
+  - 30.599999999999998
+  - 42
+  - 34.2
+  - 37.2
+  end: 50
+  feature_columns:
+  - value-0
+  - value-1
+  - value-2
+  - value-3
+  iterations: 5000
+  name: 4-std_cut_wave-stdRatio_2-stdPast_30
+  permutation:
+  - 3060
+  - 3420
+  - 3720
+  - 4200
+  std_ratio:
+  - 2
+  - 2
+  - 2
+  - 2
+- a_t:
+  - 1
+  - 1.5
+  - -0.6
+  - 0.7
+  anomalies:
+  - kinds:
+    - kind: signal-cut-match
+  channels: 4
+  cuts:
+  - 30.599999999999998
+  - 42
+  - 34.2
+  - 37.2
+  end: 50
+  feature_columns:
+  - value-0
+  - value-1
+  - value-2
+  - value-3
+  iterations: 5000
+  name: 4-std_cut_wave-stdRatio_2-stdPast_70
+  permutation:
+  - 3060
+  - 3420
+  - 3720
+  - 4200
+  std_ratio:
+  - 2
+  - 2
+  - 2
+  - 2

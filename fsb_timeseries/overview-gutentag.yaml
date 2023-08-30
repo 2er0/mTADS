@@ -1,0 +1,913 @@
+generated-timeseries:
+- anomalies:
+  - kinds:
+    - kind: platform
+      value: 0.0
+    length: 100
+  base-oscillation:
+    amplitude: 1.0
+    frequency: 0.5
+    kind: sine
+    variance: 0
+  channels: 2
+  generation-id: 0
+  length: 1000
+  name: 2-sine-one-channel-anomaly-noise-00%
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - kinds:
+    - kind: platform
+      value: 0.0
+    length: 100
+  base-oscillation:
+    amplitude: 1.0
+    frequency: 0.5
+    kind: sine
+    variance: 0.01
+  channels: 2
+  generation-id: 1
+  length: 1000
+  name: 2-sine-one-channel-anomaly-noise-01%
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - kinds:
+    - kind: platform
+      value: 0.0
+    length: 100
+  base-oscillation:
+    amplitude: 1.0
+    frequency: 0.5
+    kind: sine
+    variance: 0.1
+  channels: 2
+  generation-id: 2
+  length: 1000
+  name: 2-sine-one-channel-anomaly-noise-10%
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - kinds:
+    - kind: platform
+      value: 0.0
+    length: 100
+  base-oscillation:
+    amplitude: 1.0
+    frequency: 0.5
+    kind: sine
+    variance: 0.3
+  channels: 2
+  generation-id: 3
+  length: 1000
+  name: 2-sine-one-channel-anomaly-noise-30%
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - kinds:
+    - kind: platform
+      value: 0.0
+    length: 100
+  base-oscillation:
+    amplitude: 1.0
+    frequency: 0.5
+    kind: sine
+    variance: 0.5
+  channels: 2
+  generation-id: 4
+  length: 1000
+  name: 2-sine-one-channel-anomaly-noise-50%
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - kinds:
+    - kind: mean
+      offset: 0.3
+    length: 100
+    position: beginning
+  base-oscillation:
+    amplitude: 2
+    frequency: 0.5
+    kind: sine
+    trend:
+      amplitude: 0.5
+      frequency: 0.1
+      kind: sine
+      variance: 0
+    variance: 0.1
+  channels: 2
+  generation-id: 5
+  length: 10000
+  name: 2-sine-one-channel-anomaly-beginning
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - kinds:
+    - kind: mean
+      offset: 0.3
+    length: 100
+    position: middle
+  base-oscillation:
+    amplitude: 2
+    frequency: 0.5
+    kind: sine
+    trend:
+      amplitude: 0.5
+      frequency: 0.1
+      kind: sine
+      variance: 0
+    variance: 0.1
+  channels: 2
+  generation-id: 6
+  length: 10000
+  name: 2-sine-one-channel-anomaly-middle
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - kinds:
+    - &id001
+      frequency_factor: 2.0
+      kind: frequency
+    length: 10
+    position: middle
+  - kinds:
+    - *id001
+    length: 10
+    position: middle
+  - kinds:
+    - *id001
+    length: 10
+    position: end
+  - kinds:
+    - *id001
+    length: 10
+    position: end
+  - kinds:
+    - *id001
+    length: 10
+    position: end
+  base-oscillation:
+    amplitude: 0.6
+    frequency: 0.4
+    kind: sine
+    offset: 1.0
+    variance: 0.05
+  channels: 2
+  generation-id: 7
+  length: 1000
+  name: 2-sine-short-5-anomalies-one-channel
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - kinds:
+    - &id002
+      frequency_factor: 2.0
+      kind: frequency
+    length: 50
+    position: middle
+  - kinds:
+    - *id002
+    length: 50
+    position: middle
+  - kinds:
+    - *id002
+    length: 50
+    position: end
+  - kinds:
+    - *id002
+    length: 50
+    position: end
+  - kinds:
+    - *id002
+    length: 50
+    position: end
+  base-oscillation:
+    amplitude: 0.6
+    frequency: 0.4
+    kind: sine
+    offset: 1.0
+    variance: 0.05
+  channels: 2
+  generation-id: 8
+  length: 10000
+  name: 2-sine-long-5-anomalies-one-channel
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - kinds:
+    - frequency_factor: 2.0
+      kind: frequency
+    length: 50
+    position: middle
+  - kinds:
+    - cbf_pattern_factor: 2
+      kind: pattern
+      sinusoid_k: 10.0
+    length: 100
+    position: end
+  base-oscillation:
+    amplitude: 2.5
+    freq-mod: 0.5
+    frequency: 0.8
+    kind: sine
+    offset: -2.0
+    variance: 0.05
+  channels: 2
+  generation-id: 9
+  length: 10000
+  name: 2-sine-long-2-diff-anomalies-one-channel
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - kinds:
+    - kind: pattern-shift
+      shift_by: 10
+      transition_window: 10
+    length: 100
+    position: beginning
+  - kinds:
+    - kind: mean
+      offset: 0.3
+    length: 100
+    position: beginning
+  - kinds:
+    - frequency_factor: 2.0
+      kind: frequency
+    length: 50
+    position: middle
+  - kinds:
+    - cbf_pattern_factor: 2
+      kind: pattern
+      sinusoid_k: 10.0
+    length: 100
+    position: middle
+  - kinds:
+    - amplitude_factor: 0.5
+      kind: amplitude
+    length: 100
+    position: middle
+  - kinds:
+    - kind: extremum
+      local: false
+      min: false
+    length: 1
+    position: end
+  - kinds:
+    - kind: variance
+      variance: 0.3
+    length: 100
+    position: end
+  - kinds:
+    - kind: platform
+      value: 0.0
+    length: 100
+    position: end
+  - kinds:
+    - kind: trend
+      oscillation:
+        amplitude: 1.0
+        frequency: 1
+        kind: sine
+        variance: 0.0
+    length: 100
+    position: end
+  base-oscillations:
+  - amplitude: 1.0
+    frequency: 0.5
+    kind: sine
+    variance: 0.05
+  - amplitude: 2.5
+    freq-mod: 0.5
+    frequency: 0.8
+    kind: sine
+    offset: -2.0
+    variance: 0.05
+  - amplitude: 0.6
+    frequency: 0.4
+    kind: sine
+    offset: 1.0
+    variance: 0.05
+  - amplitude: 0.9
+    freq-mod: 0.01
+    frequency: 0.9
+    kind: sine
+    offset: 1.3
+    variance: 0.05
+  channels: 4
+  generation-id: 10
+  length: 10000
+  name: 4-sine-long-9-diff-anomalies-one-channel
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    exact-position: 950
+    kinds:
+    - &id003
+      frequency_factor: 2.0
+      kind: frequency
+    length: 10
+  - channel: 1
+    exact-position: 900
+    kinds:
+    - *id003
+    length: 10
+  - channel: 2
+    exact-position: 960
+    kinds:
+    - *id003
+    length: 10
+  - channel: 3
+    exact-position: 880
+    kinds:
+    - *id003
+    length: 10
+  base-oscillations:
+  - amplitude: 1.0
+    frequency: 0.5
+    kind: sine
+    variance: 0.05
+  - amplitude: 2.5
+    freq-mod: 0.5
+    frequency: 0.8
+    kind: sine
+    offset: -2.0
+    variance: 0.05
+  - amplitude: 0.6
+    frequency: 0.4
+    kind: sine
+    offset: 1.0
+    variance: 0.05
+  - amplitude: 0.9
+    freq-mod: 0.01
+    frequency: 0.9
+    kind: sine
+    offset: 1.3
+    variance: 0.05
+  channels: 4
+  generation-id: 11
+  length: 1000
+  name: 4-sine-all-channel-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    kinds:
+    - frequency_factor: 2.0
+      kind: frequency
+    length: 10
+    position: middle
+  base-oscillations:
+  - amplitude: 2.5
+    freq-mod: 0.5
+    frequency: 0.8
+    kind: sine
+    offset: -2.0
+    variance: 0.05
+  - amplitude: 0.6
+    frequency: 0.4
+    kind: sine
+    offset: 1.0
+    variance: 0.05
+  channels: 2
+  generation-id: 12
+  length: 1000
+  name: 2-sine-one-channel-frequency-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 1
+    kinds:
+    - kind: mean
+      offset: 0.3
+    length: 10
+    position: middle
+  base-oscillations:
+  - amplitude: 0.6
+    frequency: 0.4
+    kind: sine
+    offset: 1.0
+    variance: 0.05
+  - amplitude: 0.9
+    freq-mod: 0.01
+    frequency: 0.9
+    kind: sine
+    offset: 1.3
+    variance: 0.05
+  channels: 2
+  generation-id: 13
+  length: 1000
+  name: 2-sine-one-channel-mean-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    kinds:
+    - frequency_factor: 2.0
+      kind: frequency
+    length: 10
+    position: middle
+  base-oscillations:
+  - amplitude: 0.6
+    frequency: 0.4
+    kind: sine
+    offset: 1.0
+    variance: 0.05
+  - amplitude: 1.0
+    frequency: 0.5
+    kind: sine
+    variance: 0.05
+  - amplitude: 2.5
+    freq-mod: 0.5
+    frequency: 0.8
+    kind: sine
+    offset: -2.0
+    variance: 0.05
+  generation-id: 14
+  length: 1000
+  name: 3-sine-one-channel-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    kinds:
+    - &id004
+      frequency_factor: 2.0
+      kind: frequency
+    length: 10
+    position: middle
+  - channel: 1
+    kinds:
+    - *id004
+    length: 10
+    position: middle
+  base-oscillations:
+  - amplitude: 2
+    frequency: 0.5
+    kind: sine
+    trend:
+      amplitude: 0.5
+      frequency: 0.1
+      kind: sine
+      variance: 0
+    variance: 0.1
+  - amplitude: 1.0
+    frequency: 0.5
+    kind: sine
+    variance: 0.05
+  generation-id: 15
+  length: 1000
+  name: 2-sine-all-channel-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    kinds:
+    - frequency_factor: 2.0
+      kind: frequency
+    length: 50
+    position: middle
+  base-oscillations:
+  - frequency: 0.8
+    kind: ecg
+    variance: 0.05
+  - frequency: 0.8
+    kind: ecg
+    variance: 0.1
+  channels: 2
+  generation-id: 16
+  length: 3000
+  name: 2-ecg-one-channel-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    kinds:
+    - frequency_factor: 2.0
+      kind: frequency
+    length: 50
+    position: middle
+  base-oscillation:
+    frequency: 0.8
+    kind: ecg
+    variance: 0.05
+  channels: 8
+  generation-id: 17
+  length: 3000
+  name: 8-ecg-one-channel-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    kinds:
+    - frequency_factor: 2.0
+      kind: frequency
+    length: 10
+    position: middle
+  base-oscillation:
+    frequency: 1
+    kind: ecg
+    variance: 0.05
+  channels: 6
+  generation-id: 18
+  length: 1000
+  name: 6-ecg-one-channel-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    kinds:
+    - &id005
+      frequency_factor: 2.0
+      kind: frequency
+    length: 10
+    position: middle
+  - channel: 1
+    kinds:
+    - *id005
+    length: 10
+    position: end
+  base-oscillation:
+    frequency: 0.8
+    kind: ecg
+    variance: 0.1
+  channels: 2
+  generation-id: 19
+  length: 1000
+  name: 2-ecg-all-channel-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    kinds:
+    - cbf_pattern_factor: 2
+      kind: pattern
+      sinusoid_k: 10.0
+    length: 50
+    position: middle
+  base-oscillation:
+    frequency: 1
+    kind: ecg
+    variance: 0.05
+  channels: 4
+  generation-id: 20
+  length: 1000
+  name: 6-ecg-one-channel-pattern-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 1
+    kinds:
+    - &id006
+      amplitude_factor: 0.5
+      kind: amplitude
+    length: 50
+    position: middle
+  - channel: 3
+    kinds:
+    - *id006
+    length: 50
+    position: end
+  base-oscillation:
+    frequency: 1
+    kind: ecg
+    variance: 0.05
+  channels: 4
+  generation-id: 21
+  length: 1000
+  name: 4-ecg-one-channel-amplitude-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    exact-position: 900
+    kinds:
+    - &id007
+      kind: mean
+      offset: 0.3
+    length: 50
+  - channel: 1
+    exact-position: 980
+    kinds:
+    - *id007
+    length: 50
+  - channel: 2
+    exact-position: 1100
+    kinds:
+    - *id007
+    length: 50
+  - channel: 3
+    exact-position: 1500
+    kinds:
+    - *id007
+    length: 50
+  base-oscillation:
+    amplitude: 1.0
+    avg-pattern-length: 160
+    kind: cylinder-bell-funnel
+    offset: 12.4
+    variance: 0.05
+    variance-amplitude: 5
+    variance-pattern-length: 0.2
+  channels: 4
+  generation-id: 22
+  length: 2000
+  name: 4-cbf-all-channel-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    kinds:
+    - kind: mean
+      offset: 0.3
+    length: 30
+    position: middle
+  base-oscillation:
+    amplitude: 1.0
+    avg-pattern-length: 160
+    kind: cylinder-bell-funnel
+    offset: 12.4
+    variance: 0.05
+    variance-amplitude: 5
+    variance-pattern-length: 0.2
+  channels: 2
+  generation-id: 23
+  length: 1000
+  name: 2-cbf-one-channel-middle-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    kinds:
+    - kind: mean
+      offset: 0.3
+    length: 10
+    position: middle
+  base-oscillation:
+    amplitude: 1.0
+    avg-pattern-length: 160
+    kind: cylinder-bell-funnel
+    offset: 12.4
+    variance: 0.05
+    variance-amplitude: 5
+    variance-pattern-length: 0.2
+  channels: 6
+  generation-id: 24
+  length: 1000
+  name: 6-cbf-one-channel-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    kinds:
+    - kind: mean
+      offset: 0.3
+    length: 10
+    position: middle
+  base-oscillation:
+    amplitude: 1.0
+    avg-pattern-length: 160
+    kind: cylinder-bell-funnel
+    offset: 12.4
+    variance: 0.05
+    variance-amplitude: 5
+    variance-pattern-length: 0.2
+  channels: 2
+  generation-id: 25
+  length: 1000
+  name: 2-cbf-one-channel-short-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 1
+    kinds:
+    - context_window: 50
+      kind: extremum
+      local: true
+      min: true
+    length: 1
+    position: middle
+  - channel: 0
+    kinds:
+    - kind: extremum
+      local: false
+      min: false
+    length: 1
+    position: end
+  base-oscillation:
+    amplitude: 1.0
+    avg-pattern-length: 160
+    kind: cylinder-bell-funnel
+    offset: 12.4
+    variance: 0.05
+    variance-amplitude: 5
+    variance-pattern-length: 0.2
+  channels: 2
+  generation-id: 26
+  length: 1000
+  name: 2-cbf-all-channel-middle-platform-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 1
+    kinds:
+    - kind: trend
+      oscillation:
+        amplitude: 1.0
+        frequency: 1
+        kind: sine
+        variance: 0.0
+    length: 100
+    position: middle
+  base-oscillation:
+    amplitude: 1.0
+    avg-pattern-length: 160
+    kind: cylinder-bell-funnel
+    offset: 12.4
+    variance: 0.05
+    variance-amplitude: 5
+    variance-pattern-length: 0.2
+  channels: 2
+  generation-id: 27
+  length: 1000
+  name: 2-cbf-one-channel-middle-trend-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    exact-position: 500
+    kinds:
+    - &id008
+      kind: mean
+      offset: 0.3
+    length: 10
+  - channel: 1
+    exact-position: 500
+    kinds:
+    - *id008
+    length: 10
+  - channel: 2
+    exact-position: 500
+    kinds:
+    - *id008
+    length: 10
+  - channel: 3
+    exact-position: 500
+    kinds:
+    - *id008
+    length: 10
+  base-oscillation:
+    amplitude: 2.5
+    kind: random-walk
+    offset: -2.0
+    smoothing: 0.1
+    variance: 0.0
+  channels: 4
+  generation-id: 28
+  length: 1000
+  name: 4-rw-all-channels-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    kinds:
+    - kind: mean
+      offset: 0.3
+    length: 10
+    position: middle
+  base-oscillation:
+    amplitude: 2.5
+    kind: random-walk
+    offset: -2.0
+    smoothing: 0.1
+    variance: 0.0
+  channels: 2
+  generation-id: 29
+  length: 1000
+  name: 2-rw-one-channels-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    kinds:
+    - kind: mean
+      offset: 0.3
+    length: 10
+    position: middle
+  base-oscillation:
+    amplitude: 2.5
+    kind: random-walk
+    offset: -2.0
+    smoothing: 0.1
+    variance: 0.0
+  channels: 6
+  generation-id: 30
+  length: 1000
+  name: 6-rw-one-channels-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    kinds:
+    - kind: mean
+      offset: 0.3
+    length: 10
+    position: middle
+  base-oscillation:
+    amplitude: 2.5
+    kind: random-walk
+    offset: -2.0
+    smoothing: 0.1
+    variance: 0.0
+  channels: 10
+  generation-id: 31
+  length: 1000
+  name: 10-rw-one-channels-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 0
+    exact-position: 700
+    kinds:
+    - kind: platform
+      value: 0.0
+    length: 100
+  base-oscillation:
+    amplitude: 2.5
+    kind: random-walk
+    offset: -2.0
+    smoothing: 0.1
+    variance: 0.0
+  channels: 2
+  generation-id: 32
+  length: 1000
+  name: 2-rw-one-channels-platform-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 3
+    kinds:
+    - context_window: 50
+      kind: extremum
+      local: true
+      min: true
+    length: 1
+    position: middle
+  base-oscillation:
+    amplitude: 2.5
+    kind: random-walk
+    offset: -2.0
+    smoothing: 0.1
+    variance: 0.0
+  channels: 4
+  generation-id: 33
+  length: 1000
+  name: 4-rw-one-channels-extremum-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 3
+    kinds:
+    - kind: variance
+      variance: 0.1
+    length: 150
+    position: middle
+  base-oscillation:
+    amplitude: 2.5
+    kind: random-walk
+    offset: -2.0
+    smoothing: 0.1
+    variance: 0.0
+  channels: 4
+  generation-id: 34
+  length: 1000
+  name: 4-rw-one-channels-variance-anomaly
+  semi-supervised: true
+  supervised: true
+- anomalies:
+  - channel: 3
+    kinds:
+    - kind: trend
+      oscillation:
+        amplitude: 1.0
+        frequency: 1
+        kind: sine
+        variance: 0.0
+    length: 100
+    position: middle
+  base-oscillation:
+    amplitude: 2.5
+    kind: random-walk
+    offset: -2.0
+    smoothing: 0.1
+    variance: 0.0
+  channels: 4
+  generation-id: 35
+  length: 1000
+  name: 2-rw-one-channels-trend-anomaly
+  semi-supervised: true
+  supervised: true
+meta:
+  download_link: https://gitlab.hpi.de/akita/guten-tag
+  git_commit_sha: 62bc2a7f59e2e83bd6a2b55c4ff3f24353cdfdca
+  seed: 11
