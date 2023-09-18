@@ -22,7 +22,7 @@ def get_default_path(benchmark: str = "fsb"):
 
 def check_suite_availability(benchmark: str = "fsb"):
     base_path = Path(get_default_path(benchmark))
-    if base_path.exists() and len(list(base_path.glob("*.yaml"))) > 0 and len(list(base_path.glob("*/**.csv"))) > 0:
+    if base_path.exists() and len(list(base_path.glob("*.yaml"))) > 0 and len(list(base_path.glob("*/*.csv"))) > 0:
         # all good
         print(f"Benchmark suite {benchmark} is available.")
         return
