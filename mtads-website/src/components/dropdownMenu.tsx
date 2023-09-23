@@ -1,97 +1,59 @@
-/**
-import React, { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import React, { useState, useRef } from "react";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    position: "fixed",
-    left: 0,
-    top: 0,
-    padding: theme.spacing(1),
-    backgroundColor: "#f5f5f5",
-    zIndex: 999,
-  },
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  menuIcon: {
-    color: theme.palette.primary.main,
-  },
-}));
+type DropdownProps = {
+  options: string[];
+};
 
-const DropdownMenu: React.FC = () => {
-  const classes = useStyles();
-  const [selectedOption, setSelectedOption] = useState<string>("");
+export default function Dropdown({ options }: DropdownProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setSelectedOption(event.target.value as string);
+  const handleClick = (e: any) => {
+    if (dropdownRef.current === e.target) {
+      console.log("Dropdown click detected.");
+      return;
+    }
+    setIsOpen(false);
+    console.log("Dropdown closed.");
+  };
+
+  const handleEscape = (e: any) => {
+    if (e.key === "Escape") {
+      setIsOpen(false);
+      console.log("Dropdown closed.");
+    }
+  };
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+    console.log(isOpen ? "Dropdown opened." : "Dropdown closed.");
   };
 
   return (
-    <div className={classes.root}>
-      <IconButton aria-label="menu" className={classes.menuIcon}>
-        <MenuIcon />
-      </IconButton>
-      <FormControl className={classes.formControl}>
-        <Select
-          value={selectedOption}
-          onChange={handleChange}
-          displayEmpty
-          className={classes.select}
+    <div className="relative inline-block" ref={dropdownRef}>
+      <button
+        onClick={toggleDropdown}
+        className="py-2 px-3 bg-blue-500 text-white rounded focus:outline-none"
+      >
+        Toggle Dropdown
+      </button>
+      {isOpen && (
+        <div
+          className={`absolute mt-2 rounded-md shadow-lg bg-white divide-y divide-gray-100 z-10`}
         >
-          <MenuItem value="">Select an option</MenuItem>
-          <MenuItem value="option1">Option 1</MenuItem>
-          <MenuItem value="option2">Option 2</MenuItem>
-          <MenuItem value="option3">Option 3</MenuItem>
-        </Select>
-      </FormControl>
+          <div className="py-1">
+            {options.map((option, index) => (
+              <a
+                key={index}
+                href="#"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-500 hover:text-white"
+              >
+                {option}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
-};
-
-export default DropdownMenu;
- */
-
-import React, { useState } from 'react';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-
-export default function SimpleMenu() {
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    return (
-        <div>
-            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
-                Open Menu
-            </Button>
-            <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-            >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
-            </Menu>
-        </div>
-    );
 }
