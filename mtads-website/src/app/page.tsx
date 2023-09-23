@@ -26,7 +26,7 @@ export default function Home() {
             <p className="mt-4 text-xl">Les om NorwAI og prosjektet her!</p>
           </Link>
           <a
-            href="/search"
+            href="/visualize"
             className="p-4 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
           >
             <h3 className="text-2xl font-bold">Søk &rarr;</h3>
