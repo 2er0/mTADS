@@ -15,7 +15,6 @@ export default function Home() {
           Velkommen til{" "}
           <a className="text-blue-450">NorwAI for søk av datasett</a>
         </h1>
-        <Dropdown />
 
         <p className="mt-5 text-3xl">Brukt til norGPT modellen</p>
 
