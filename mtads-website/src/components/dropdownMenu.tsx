@@ -35,7 +35,7 @@ export default function Dropdown({ options }: DropdownProps) {
         onClick={toggleDropdown}
         className="py-2 px-3 bg-blue-500 text-white rounded focus:outline-none"
       >
-        Toggle Dropdown
+        Select data to visualize
       </button>
       {isOpen && (
         <div
