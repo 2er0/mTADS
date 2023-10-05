@@ -44,9 +44,12 @@ const Page = () => {
         return response.text();
       })
       .then((data) => {
-        // Note: Ensure YAML is properly imported as per your module system, e.g., import * as YAML from 'js-yaml';
-        const jsonData: YamlDataItem[] = YAML.load(data) as YamlDataItem[];
-        const names = jsonData.map((item: YamlDataItem) => item.name);
+        const jsonData = YAML.load(data) as {
+          "fsb-timeseries": YamlDataItem[];
+        };
+        const names = jsonData["fsb-timeseries"].map(
+          (item: YamlDataItem) => item.name
+        );
         setOptions(names);
       })
       .catch((error) => {
@@ -68,6 +71,7 @@ const Page = () => {
   }
 
   useEffect(() => {
+    fetchNames();
     if (d3Container.current) {
       d3.select(d3Container.current).selectAll("*").remove();
       // Set the dimensions and margins of the graph
@@ -98,8 +102,7 @@ const Page = () => {
         .append("g")
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-      const filePath =
-        "fsb_timeseries/2-cbf-one-channel-middle-anomaly/train_anomaly.csv";
+        const filePath = `fsb_timeseries/${encodedValue}/train_anomaly.csv`;
 
       d3.csv(filePath).then((data: d3.DSVRowArray<string>) => {
         // Explicitly define the structure expected in the CSV for safety
