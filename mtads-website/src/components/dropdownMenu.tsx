@@ -1,4 +1,6 @@
+"use client";
 import React, { useState, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 type DropdownProps = {
   options: string[];
@@ -7,6 +9,7 @@ type DropdownProps = {
 export default function Dropdown({ options }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const router = useRouter();
 
   const handleClick = (e: any) => {
     if (dropdownRef.current === e.target) {
@@ -33,20 +36,23 @@ export default function Dropdown({ options }: DropdownProps) {
     <div className="relative inline-block" ref={dropdownRef}>
       <button
         onClick={toggleDropdown}
-        className="py-2 px-3 bg-blue-500 text-white rounded focus:outline-none"
+        className="py-2 px-3 bg-gray-800 text-white rounded focus:outline-none"
       >
         Select data to visualize
       </button>
       {isOpen && (
         <div
-          className={`absolute mt-2 rounded-md shadow-lg bg-white divide-y divide-gray-100 z-10`}
+          className={`absolute mt-2 rounded-md shadow-lg bg-gray-800 divide-y divide-gray-700 overflow-y-auto max-h-60`}
         >
           <div className="py-1">
             {options.map((option, index) => (
               <a
                 key={index}
-                href="#"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-500 hover:text-white"
+                onClick={(e) => {
+                  const encodedValue = encodeURIComponent(option);
+                  router.push(`/visualize?q=${encodedValue}`);
+                }}
+                className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-600 hover:text-white cursor-pointer"
               >
                 {option}
               </a>
