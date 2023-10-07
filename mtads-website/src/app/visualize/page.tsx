@@ -32,25 +32,50 @@ const Page = () => {
     name: string;
     [key: string]: any;
   }
-
+  // "fsb_timeseries/overview-gutentag.yaml",
   const fetchNames = () => {
-    fetch("fsb_timeseries/overview.yaml")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(
-            "Network response was not ok: " + response.statusText
-          );
-        }
-        return response.text();
-      })
-      .then((data) => {
-        const jsonData = YAML.load(data) as {
-          "fsb-timeseries": YamlDataItem[];
-        };
-        const names = jsonData["fsb-timeseries"].map(
-          (item: YamlDataItem) => item.name
-        );
-        setOptions(names);
+    const urls = [
+      "fsb_timeseries/overview.yaml",
+      "fsb_timeseries/overview-gutentag.yaml",
+    ];
+
+    Promise.all(
+      urls.map((url) =>
+        fetch(url)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(
+                "Network response was not ok: " + response.statusText
+              );
+            }
+            return response.text();
+          })
+          .then((data) => {
+            if (url.endsWith("overview-gutentag.yaml")) {
+              const jsonData = YAML.load(data) as {
+                "generated-timeseries": YamlDataItem[];
+              };
+              return jsonData && jsonData["generated-timeseries"]
+                ? jsonData["generated-timeseries"].map(
+                    (item: YamlDataItem) => item.name
+                  )
+                : [];
+            } else {
+              const jsonData = YAML.load(data) as {
+                "fsb-timeseries": YamlDataItem[];
+              };
+              return jsonData && jsonData["fsb-timeseries"]
+                ? jsonData["fsb-timeseries"].map(
+                    (item: YamlDataItem) => item.name
+                  )
+                : [];
+            }
+          })
+      )
+    )
+      .then((namesArrays) => {
+        const allNames = namesArrays.flatMap((names) => names);
+        setOptions(allNames);
       })
       .catch((error) => {
         console.error(
@@ -63,11 +88,6 @@ const Page = () => {
   interface DataPoint {
     timestamp: number;
     [key: string]: number;
-  }
-
-  interface RawDataPoint {
-    timestamp: string;
-    [key: string]: string;
   }
 
   useEffect(() => {
@@ -123,10 +143,21 @@ const Page = () => {
 
           x.domain(d3.extent(data, (d) => +d.timestamp) as [number, number]);
 
-          y.domain([
-            0,
-            d3.max(data, (d) => Math.max(...keys.map((key) => +d[key]))) ?? 0,
-          ]);
+          const allYValues = data.reduce((accum: number[], curr) => {
+            keys.forEach((key) => accum.push(+curr[key]));
+            return accum;
+          }, []);
+
+          const minY = Math.min(...allYValues);
+          const maxY = Math.max(...allYValues);
+
+          // Dynamically adjust height if necessary.
+          // For example, if there is a negative minY value, provide more space. Adjust as per your visualization needs.
+          if (minY < 0) {
+            height = height - minY;
+          }
+
+          y.domain([minY, maxY]);
 
           const lines = keys.map((key, i) => {
             return d3
@@ -159,10 +190,18 @@ const Page = () => {
           svg
             .append("g")
             .attr("transform", `translate(0, ${height})`)
-            .call(d3.axisBottom(x));
+            .call(d3.axisBottom(x))
+            .attr("class", "axis x-axis")
+            .selectAll("text")
+            .style("fill", "white");
 
           // Add the Y Axis
-          svg.append("g").call(d3.axisLeft(y));
+          svg
+            .append("g")
+            .call(d3.axisLeft(y))
+            .attr("class", "axis y-axis")
+            .selectAll("text")
+            .style("fill", "white");
         });
       });
     }
@@ -173,10 +212,9 @@ const Page = () => {
       <div className="flex flex-col min-h-screen">
         <Dropdown options={options} />
         <div
-          className="flex flex-col items-center w-full h-screen"
+          className="flex flex-col items-center w-full"
           ref={d3Container}
         />{" "}
-        {/* Flex and column will stack children (SVGs) vertically */}
         <footer className="flex items-center justify-center w-full h-24 border-t">
           <p className="mr-1">Laget av</p>
           <Link href="https://github.com/villi02">
