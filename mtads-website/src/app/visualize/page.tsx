@@ -4,94 +4,22 @@ import Link from "next/link";
 import Dropdown from "../../components/dropdownMenu";
 import { useSearchParams } from "next/navigation";
 import * as d3 from "d3";
-import * as YAML from "js-yaml";
+import { useData } from "@/hooks/useData";
 
 const Page = () => {
   const d3Container = useRef(null);
-  //const options = ["Train", "Test", "Validation"];
-  const [options, setOptions] = useState<string[]>([]);
-
-  const fetchSearch = async (url: string) => {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(response.statusText);
-    }
-    const res = JSON.stringify(response);
-    return response.json();
-  };
 
   const search = useSearchParams();
   const searchQuery = search ? search.get("q") : null;
   const encodedValue = encodeURIComponent(searchQuery || "");
 
-  interface YamlDataItem {
-    a_t: number[];
-    anomalies: { kinds: { kind: string }[] }[];
-    channels: number;
-    feature_columns: string[];
-    name: string;
-    [key: string]: any;
-  }
-  // "fsb_timeseries/overview-gutentag.yaml",
-  const fetchNames = () => {
-    const urls = [
-      "fsb_timeseries/overview.yaml",
-      "fsb_timeseries/overview-gutentag.yaml",
-    ];
-
-    Promise.all(
-      urls.map((url) =>
-        fetch(url)
-          .then((response) => {
-            if (!response.ok) {
-              throw new Error(
-                "Network response was not ok: " + response.statusText
-              );
-            }
-            return response.text();
-          })
-          .then((data) => {
-            if (url.endsWith("overview-gutentag.yaml")) {
-              const jsonData = YAML.load(data) as {
-                "generated-timeseries": YamlDataItem[];
-              };
-              return jsonData && jsonData["generated-timeseries"]
-                ? jsonData["generated-timeseries"].map(
-                    (item: YamlDataItem) => item.name
-                  )
-                : [];
-            } else {
-              const jsonData = YAML.load(data) as {
-                "fsb-timeseries": YamlDataItem[];
-              };
-              return jsonData && jsonData["fsb-timeseries"]
-                ? jsonData["fsb-timeseries"].map(
-                    (item: YamlDataItem) => item.name
-                  )
-                : [];
-            }
-          })
-      )
-    )
-      .then((namesArrays) => {
-        const allNames = namesArrays.flatMap((names) => names);
-        setOptions(allNames);
-      })
-      .catch((error) => {
-        console.error(
-          "There has been a problem with your fetch operation:",
-          error
-        );
-      });
-  };
-
   interface DataPoint {
     timestamp: number;
     [key: string]: number;
   }
+  const options = useData();
 
   useEffect(() => {
-    fetchNames();
     if (d3Container.current) {
       d3.select(d3Container.current).selectAll("*").remove();
       // Set the dimensions and margins of the graph
@@ -110,17 +38,6 @@ const Page = () => {
         // Set the ranges
         let x = d3.scaleLinear().range([0, width]);
         let y = d3.scaleLinear().range([height, 0]);
-
-        // Define the line
-        let valueline = d3
-          .line<DataPoint>()
-          .x((d) => x(d.timestamp))
-          .y((d) => y(d["value-0"]));
-
-        let valueline2 = d3
-          .line<DataPoint>()
-          .x((d) => x(d.timestamp))
-          .y((d) => y(d["value-1"]));
 
         let svg = d3
           .select(d3Container.current)
