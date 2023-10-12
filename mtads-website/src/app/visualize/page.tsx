@@ -121,7 +121,7 @@ const Page = () => {
                 .data([processedData])
                 .attr("class", "line")
                 .attr("d", pathData)
-                .style("stroke", d3.schemeCategory10[i])
+                .style("stroke", d3.schemeCategory10[i - 1])
                 .style("fill", "none")
                 .style("stroke-opacity", 0.5); // Add some transparency to see overlapping lines
             });
