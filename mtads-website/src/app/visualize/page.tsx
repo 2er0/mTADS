@@ -122,8 +122,7 @@ const Page = () => {
                 .attr("class", "line")
                 .attr("d", pathData)
                 .style("stroke", d3.schemeCategory10[i - 1])
-                .style("fill", "none")
-                .style("stroke-opacity", 0.5); // Add some transparency to see overlapping lines
+                .style("fill", "none");
             });
           })
           .catch((error) => {
