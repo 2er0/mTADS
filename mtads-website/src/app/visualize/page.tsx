@@ -31,9 +31,10 @@ const Page = () => {
       fileNames.forEach((fileName, i) => {
         const filePath = `https://raw.githubusercontent.com/2er0/mTADS/main/fsb_timeseries/${encodedValue}/${fileName}`;
 
-        let margin = { top: 20, right: 20, bottom: 30, left: 50 },
-          width = 960 - margin.left - margin.right,
-          height = 500 - margin.top - margin.bottom;
+        let margin = {top: 20, right: 20, bottom: 30, left: 50},
+            magic_height = 100,
+            width = 960 - margin.left - margin.right,
+            height = document.body.offsetHeight / 3 - magic_height - margin.top - margin.bottom;
 
         // Set the ranges
         let x = d3.scaleLinear().range([0, width]);

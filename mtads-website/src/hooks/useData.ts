@@ -16,8 +16,8 @@ export const useData = () => {
 
   const fetchNames = () => {
     const urls = [
-      "fsb_timeseries/overview.yaml",
-      "fsb_timeseries/overview-gutentag.yaml",
+      "https://raw.githubusercontent.com/2er0/mTADS/main/fsb_timeseries/overview.yaml",
+      "https://raw.githubusercontent.com/2er0/mTADS/main/fsb_timeseries/overview-gutentag.yaml",
     ];
 
     Promise.all(
