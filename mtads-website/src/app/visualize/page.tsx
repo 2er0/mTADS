@@ -29,7 +29,7 @@ const Page = () => {
         "test.csv",
       ];
       fileNames.forEach((fileName, i) => {
-        const filePath = `fsb_timeseries/${encodedValue}/${fileName}`;
+        const filePath = `https://raw.githubusercontent.com/2er0/mTADS/main/fsb_timeseries/${encodedValue}/${fileName}`;
 
         let margin = { top: 20, right: 20, bottom: 30, left: 50 },
           width = 960 - margin.left - margin.right,
