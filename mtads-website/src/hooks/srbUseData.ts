@@ -16,8 +16,7 @@ export const useData = () => {
 
   const fetchNames = () => {
     const urls = [
-      "https://raw.githubusercontent.com/2er0/mTADS/main/fsb_timeseries/overview.yaml",
-      "https://raw.githubusercontent.com/2er0/mTADS/main/fsb_timeseries/overview-gutentag.yaml",
+      "https://raw.githubusercontent.com/2er0/mTADS/main/srb_timeseries/overview.yaml",
     ];
 
     Promise.all(
@@ -32,25 +31,14 @@ export const useData = () => {
             return response.text();
           })
           .then((data) => {
-            if (url.endsWith("overview-gutentag.yaml")) {
               const jsonData = YAML.load(data) as {
-                "generated-timeseries": YamlDataItem[];
+                "srb-timeseries": YamlDataItem[];
               };
-              return jsonData && jsonData["generated-timeseries"]
-                ? jsonData["generated-timeseries"].map(
+              return jsonData && jsonData["srb-timeseries"]
+                ? jsonData["srb-timeseries"].map(
                     (item: YamlDataItem) => item.name
                   )
                 : [];
-            } else {
-              const jsonData = YAML.load(data) as {
-                "fsb-timeseries": YamlDataItem[];
-              };
-              return jsonData && jsonData["fsb-timeseries"]
-                ? jsonData["fsb-timeseries"].map(
-                    (item: YamlDataItem) => item.name
-                  )
-                : [];
-            }
           })
       )
     )

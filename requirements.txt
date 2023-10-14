@@ -6,3 +6,4 @@ igraph==0.10.6
 PyYAML==6.0
 tqdm
 scikit-learn
+requests

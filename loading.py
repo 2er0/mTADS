@@ -1,16 +1,61 @@
 from pathlib import Path
+from shutil import rmtree
 
 import pandas as pd
 import yaml
+from requests import get
+import zipfile
+
+default_benchmark_path = {"fsb": f"{Path(__file__).parent}/fsb_timeseries",
+                          "srb": f"{Path(__file__).parent}/srd_timeseries"}
+base_url = "https://github.com/2er0/mTADS/releases/download/v1.0/"
+benchmark_file_name = {"fsb": "fsb_timeseries.zip",
+                       "srb": "srb_timeseries.zip"}
+
+
+def get_default_path(benchmark: str = "fsb"):
+    try:
+        return default_benchmark_path[benchmark]
+    except KeyError:
+        raise ValueError(f"Benchmark suite '{benchmark}' not available")
+
+
+def check_suite_availability(benchmark: str = "fsb"):
+    base_path = Path(get_default_path(benchmark))
+    if base_path.exists() and len(list(base_path.glob("*.yaml"))) > 0 and len(list(base_path.glob("*/*.csv"))) > 0:
+        # all good
+        print(f"Benchmark suite {benchmark} is available.")
+        return
+
+    # clean
+    download_dir = f"{Path(__file__).parent}/download/"
+    # clean previously downloaded
+    rmtree(f"{download_dir}{benchmark_file_name[benchmark]}", ignore_errors=True)
+    # clean benchmark folder
+    rmtree(default_benchmark_path[benchmark], ignore_errors=True)
+
+    # setup folders
+    Path(download_dir).mkdir(parents=True, exist_ok=True)
+    Path(default_benchmark_path[benchmark]).mkdir(parents=True, exist_ok=True)
+
+    # download
+    print(f"Downloading benchmark suite: {benchmark}")
+    r = get(f"{base_url}{benchmark_file_name[benchmark]}", stream=True)
+    suite_archive = f"{download_dir}{benchmark_file_name[benchmark]}"
+    with open(suite_archive, "wb") as f:
+        f.write(r.content)
+
+    # unzip
+    print(f"Extracting {benchmark} suite")
+    with zipfile.ZipFile(suite_archive, 'r') as zip_ref:
+        zip_ref.extractall(f"{Path(__file__).parent}")
 
 
 def load_all_stored_datasets(benchmark: str = "fsb"):
-    if benchmark == "fsb":
-        base_path = f"{Path(__file__).parent}/fsb_timeseries"
-    elif benchmark == "srb":
-        base_path = f"{Path(__file__).parent}/srd_timeseries"
-    else:
-        raise ValueError(f"Benchmark suite '{benchmark}' not available")
+    # check suite availability
+    check_suite_availability(benchmark)
+    # run suite iterator
+    base_path = get_default_path(benchmark)
     print(base_path)
     dataset_cache = {}
     configs = {}
@@ -46,7 +91,8 @@ def load_all_stored_datasets(benchmark: str = "fsb"):
             train_sequence = Path(f"{path}/train_anomaly.csv")
 
             if train_no_anomaly_sequence.exists():
-                train_no_anomaly_sequence = _drop_not_relevant_columns(pd.read_csv(train_no_anomaly_sequence.absolute()))
+                train_no_anomaly_sequence = _drop_not_relevant_columns(
+                    pd.read_csv(train_no_anomaly_sequence.absolute()))
             else:
                 train_no_anomaly_sequence = None
 
@@ -82,5 +128,5 @@ if __name__ == "__main__":
     # find index of a sequence to seek to a start or end point
     sets = list(load_all_stored_datasets("fsb"))
     for i, (n, c, _, _) in enumerate(sets):
-        if n == '2-corr-0.5_mInfluence-0.0_inclTrend-1_channel_anomaly':
+        if n == '2-saw-all-no-anomaly':
             print(i, n, c)
