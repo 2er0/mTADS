@@ -20,9 +20,9 @@ const Page = () => {
     const fileNames = []
     if (encodedValue == "") {
         fileNames.push(
-            "/nodata.png",
-            "/nodata.png",
-            "/nodata.png"
+            "./nodata.png",
+            "./nodata.png",
+            "./nodata.png"
         );
     } else {
         fileNames.push(
