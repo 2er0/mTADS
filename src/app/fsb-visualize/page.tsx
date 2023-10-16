@@ -139,7 +139,7 @@ const Page = () => {
         <div>
             <div className="flex">
                 <h1 className="text-5xl font-bold p-4">
-                    <a href="/">
+                    <a href="/mTADS/">
                         &larr; mTADS
                     </a>
                     &nbsp;| Fully synthetic benchmark suite
