@@ -2,7 +2,7 @@
   "name": "mtads-website",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://2er0.github.io/mTADS",
+  "homepage": "http://villi02.github.io/mTADS",
   "scripts": {
     "dev": "next dev",
     "predeploy" : "npm run build",
