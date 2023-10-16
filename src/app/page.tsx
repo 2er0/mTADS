@@ -23,14 +23,14 @@ export default function Home() {
 
                 <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
                     <a
-                        href="/fsb-visualize"
+                        href="/mTADS/fsb-visualize"
                         className="p-4 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
                     >
                         <h3 className="text-2xl font-bold">Visualize FSB &rarr;</h3>
                         <p className="mt-4 text-xl">Visualize the fully synthetic benchmark suite</p>
                     </a>
                     <a
-                        href="/srb-visualize"
+                        href="/mTADS/srb-visualize"
                         className="p-4 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
                     >
                         <h3 className="text-2xl font-bold">Visualize SRB &rarr;</h3>
