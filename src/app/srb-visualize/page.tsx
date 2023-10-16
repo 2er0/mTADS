@@ -35,7 +35,7 @@ const Page = () => {
     let margin = {top: 20, right: 20, bottom: 30, left: 50},
         magic_height = 150,
         width = 960 - margin.left - margin.right,
-        height = document.body.offsetHeight / 3 - magic_height - margin.top - margin.bottom;
+        height = document.body.scrollHeight / 3 - magic_height - margin.top - margin.bottom;
 
     return (
         <div>
