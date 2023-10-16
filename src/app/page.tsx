@@ -12,7 +12,7 @@ export default function Home() {
 
             <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
                 <a href="https://github.com/2er0/mTADS/tree/main">
-                    <img src="/logo.png" style={{width: 200}} className="mb-10"/>
+                    <img src="./logo.png" style={{width: 200}} className="mb-10"/>
                 </a>
                 <h1 className="text-5xl font-bold">
                     Welcome to {" "}
