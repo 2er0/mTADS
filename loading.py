@@ -7,7 +7,7 @@ from requests import get
 import zipfile
 
 default_benchmark_path = {"fsb": f"{Path(__file__).parent}/fsb_timeseries",
-                          "srb": f"{Path(__file__).parent}/srd_timeseries"}
+                          "srb": f"{Path(__file__).parent}/srb_timeseries"}
 base_url = "https://github.com/2er0/mTADS/releases/download/v1.0/"
 benchmark_file_name = {"fsb": "fsb_timeseries.zip",
                        "srb": "srb_timeseries.zip"}
