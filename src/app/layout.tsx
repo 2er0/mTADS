@@ -6,7 +6,7 @@ const inter = Inter({subsets: ['latin']})
 
 export const metadata: Metadata = {
     title: 'mTADS',
-    description: 'multivariate Time Series Anomaly Detection Benchmark Suits',
+    description: 'multivariate Time Series Anomaly Detection Benchmark Suites',
 }
 
 export default function RootLayout({
