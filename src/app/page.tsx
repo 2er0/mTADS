@@ -16,7 +16,7 @@ export default function Home() {
                 </a>
                 <h1 className="text-5xl font-bold">
                     Welcome to {" "}
-                    <a className="text-blue-450">Multivariate Time Series Anomaly Detection Benchmark Suits</a>
+                    <a className="text-blue-450">Multivariate Time Series Anomaly Detection Benchmark Suites</a>
                 </h1>
 
                 <p className="mt-5 text-3xl">Benchmark Suits for Anomaly Detection on Multivariate Time Series</p>
