@@ -1,15 +1,15 @@
 <div align="center">
-<img width="100px" src="https://github.com/2er0/mTADS/raw/main/images/logo.png" alt="multivariate time series anomaly detection benchmark suits logo"/>
-<h1 align="center">multivariate Time Series Anomaly Detection Benchmark Suits</h1>
+<img width="100px" src="https://github.com/2er0/mTADS/raw/main/images/logo.png" alt="multivariate time series anomaly detection benchmark suites logo"/>
+<h1 align="center">multivariate Time Series Anomaly Detection Benchmark Suites</h1>
 <p>
-Benchmark Suits for Anomaly Detection on Multivariate Time Series
+Benchmark Suites for Anomaly Detection on Multivariate Time Series
 </p>
 </div>
 
 
 ## Features
 
-- Two benchmark suits
+- Two benchmark suites
   1) Fully synthetic benchmark suite 
   2) Semi-realistic benchmark suite
 - Only multivariate sequences
@@ -91,7 +91,7 @@ If you use mTADS in your project or research, please cite our demonstration pape
 
 ```bibtex
 @article{Baumgartner2024TmTADS,
-  title = {mTADS: Multivariate Time Series Anomaly Detection Benchmark Suits},
+  title = {mTADS: Multivariate Time Series Anomaly Detection Benchmark Suites},
   author = {Baumgartner, David and Langseth, Helge and Ramampiaro, Heri and Engø-Monsen, Kenth},
   date = {2024}
 }
