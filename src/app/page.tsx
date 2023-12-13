@@ -19,7 +19,7 @@ export default function Home() {
                     <a className="text-blue-450">Multivariate Time Series Anomaly Detection Benchmark Suites</a>
                 </h1>
 
-                <p className="mt-5 text-3xl">Benchmark Suits for Anomaly Detection on Multivariate Time Series</p>
+                <p className="mt-5 text-3xl">Benchmark Suites for Anomaly Detection on Multivariate Time Series</p>
 
                 <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
                     <a
