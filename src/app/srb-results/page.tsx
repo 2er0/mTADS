@@ -3,7 +3,7 @@ import React, {useEffect, useRef, useState} from "react";
 import Papa from "papaparse";
 import Dropdown from "../../components/dropdownMenu";
 import Link from "next/link";
-import {useData} from "@/hooks/useData";
+import {useData} from "@/hooks/srbUseData";
 import {useSearchParams} from "next/navigation";
 
 
@@ -40,7 +40,7 @@ function SimpleDataTable({name, columns, data}) {
 
 const Page = () => {
 
-    const baseUrl = "fsb-results";
+    const baseUrl = "srb-results";
     const options = useData();
 
     const search = useSearchParams();
@@ -59,12 +59,13 @@ const Page = () => {
             return;
         }
 
-        Papa.parse(`https://raw.githubusercontent.com/2er0/mTADS/main/results/fsb-by-sequence/${encodedValue}.csv`,
+        Papa.parse(`https://raw.githubusercontent.com/2er0/mTADS/main/results/srb-by-sequence/${encodedValue}.csv`,
             {
                 download: true,
                 header: true,
                 dynamicTyping: true,
                 complete: (results) => {
+                    console.log(results)
                     setDataWithAnomaly(results.data);
                 },
                 error: (error) => {
@@ -72,7 +73,7 @@ const Page = () => {
                 }
             });
 
-        Papa.parse(`https://raw.githubusercontent.com/2er0/mTADS/main/results/fsb-by-sequence/${encodedValue}-no-anomaly.csv`,
+        Papa.parse(`https://raw.githubusercontent.com/2er0/mTADS/main/results/srb-by-sequence/${encodedValue}-no-anomaly.csv`,
             {
                 download: true,
                 header: true,
@@ -94,7 +95,7 @@ const Page = () => {
                     <a href="/mTADS/">
                         &larr; mTADS
                     </a>
-                    &nbsp;| Fully synthetic benchmark suite
+                    &nbsp;| Semi-realistic benchmark suite
                 </h1>
             </div>
             <div className="flex flex-col min-h-screen">
