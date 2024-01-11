@@ -18,7 +18,7 @@ function SimpleDataTable({name, columns, data}) {
             </div>
             <table>
                 <thead>
-                <tr>
+                <tr key="-1">
                     {columns.map((item, index) => (
                         <th>{item}</th>
                     ))}
@@ -26,7 +26,7 @@ function SimpleDataTable({name, columns, data}) {
                 </thead>
                 <tbody>
                 {data.map((item, row_index) => (
-                    <tr rowKey={item["index"]}>
+                    <tr key={item["index"]}>
                         {columns.map((column, col_index) => (
                             <td key={item["index"]}>{item[column]}</td>
                         ))}
