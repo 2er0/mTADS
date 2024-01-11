@@ -42,15 +42,15 @@ export default function Home() {
                         href="/mTADS/fsb-results"
                         className="p-4 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
                     >
-                        <h3 className="text-2xl font-bold">Result Table FSB &rarr;</h3>
-                        <p className="mt-4 text-xl">Visualize the fully synthetic benchmark suite</p>
+                        <h3 className="text-2xl font-bold">FSB Result Table &rarr;</h3>
+                        <p className="mt-4 text-xl">View the result tables</p>
                     </a>
                     <a
                         href="/mTADS/srb-results"
                         className="p-4 mt-6 text-left border w-96 rounded-xl hover:text-blue-600 focus:text-blue-600"
                     >
-                        <h3 className="text-2xl font-bold">Result Table SRB &rarr;</h3>
-                        <p className="mt-4 text-xl">Visualize the semi-realistic benchmark suite</p>
+                        <h3 className="text-2xl font-bold">SRB Result Table &rarr;</h3>
+                        <p className="mt-4 text-xl">View the result tables</p>
                     </a>
                 </div>
                 <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
