@@ -5,38 +5,8 @@ import Dropdown from "../../components/dropdownMenu";
 import Link from "next/link";
 import {useData} from "@/hooks/useData";
 import {useSearchParams} from "next/navigation";
+import SimpleDataTable from "@/components/SimpleDataTable";
 
-
-function SimpleDataTable({name, columns, data}) {
-    return (
-        <div className="pb-3">
-            <hr/>
-            <div className="flex">
-                <h2 className="text-3xl font-bold p-4">
-                    {name}
-                </h2>
-            </div>
-            <table>
-                <thead>
-                <tr key="-1">
-                    {columns.map((item, index) => (
-                        <th>{item}</th>
-                    ))}
-                </tr>
-                </thead>
-                <tbody>
-                {data.map((item, row_index) => (
-                    <tr key={item["index"]}>
-                        {columns.map((column, col_index) => (
-                            <td key={item["index"]}>{item[column]}</td>
-                        ))}
-                    </tr>
-                ))}
-                </tbody>
-            </table>
-        </div>
-    );
-}
 
 const Page = () => {
 
@@ -65,7 +35,7 @@ const Page = () => {
                 header: true,
                 dynamicTyping: true,
                 complete: (results) => {
-                    setDataWithAnomaly(results.data);
+                    setDataWithAnomaly(results.data as []);
                 },
                 error: (error) => {
                     console.log(error);
@@ -78,7 +48,7 @@ const Page = () => {
                 header: true,
                 dynamicTyping: true,
                 complete: (results) => {
-                    setDataWithoutAnomaly(results.data);
+                    setDataWithoutAnomaly(results.data as []);
                 },
                 error: (error) => {
                     console.log(error);
@@ -99,7 +69,7 @@ const Page = () => {
             </div>
             <div className="flex flex-col min-h-screen">
                 <Dropdown options={options} baseUrl={baseUrl}/>
-                <div className="flex flex-col w-full" style={{"min-height": 960}}>
+                <div className="flex flex-col w-full" style={{minHeight: 960}}>
                     {dataWithAnomaly.length != 0 &&
                         <SimpleDataTable name={encodedValue} columns={columns} data={dataWithAnomaly}/>
                     }
