@@ -10,6 +10,8 @@ Benchmark Suites for Anomaly Detection on Multivariate Time Series
   <img src="https://github.com/2er0/mTADS/actions/workflows/nextjs.yml/badge.svg">
   <a href="https://2er0.github.io/mTADS"><img src="https://img.shields.io/badge/mTADS | Online Visualizer-Online-<COLOR>.svg">
   </a>
+  <a href="https://ieeexplore.ieee.org/document/10386980"><img src="https://img.shields.io/badge/IEEE Xplore -PDF-<COLOR>.svg">
+  </a>
 </p>
 
 ## Features
@@ -107,10 +109,14 @@ configured in the `generator.py` file are generated. They need to be added to th
 If you use mTADS in your project or research, please cite our demonstration paper:
 
 ```bibtex
-@article{Baumgartner2024TmTADS,
-  title = {mTADS: Multivariate Time Series Anomaly Detection Benchmark Suites},
-  author = {Baumgartner, David and Langseth, Helge and Ramampiaro, Heri and Engø-Monsen, Kenth},
-  date = {2024}
+@INPROCEEDINGS{baumgartner_mtads_2023,
+  author={Baumgartner, David and Langseth, Helge and Ramampiaro, Heri and Engø-Monsen, Kenth},
+  booktitle={2023 IEEE International Conference on Big Data (BigData)}, 
+  title={mTADS: Multivariate Time Series Anomaly Detection Benchmark Suites}, 
+  year={2023},
+  pages={588-597},
+  keywords={Uncertainty;Manufacturing processes;Machine learning algorithms;Time series analysis;Medical services;Benchmark testing;Distance measurement;Machine learning;Anomaly detection;Time series},
+  doi={10.1109/BigData59044.2023.10386980}}
 }
 ```
 
