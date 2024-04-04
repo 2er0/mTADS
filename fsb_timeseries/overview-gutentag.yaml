@@ -423,6 +423,7 @@ generated-timeseries:
     kind: sine
     offset: -2.0
     variance: 0.05
+  channels: 3
   generation-id: 14
   length: 1000
   name: 3-sine-one-channel-anomaly
